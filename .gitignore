@@ -1,2 +1,13 @@
 
 BestStories.Api/bin/Release/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/.vs
+/.vs/BestStories/FileContentIndex
+/.vs/BestStories/FileContentIndex/3b8c651f-f002-4b2d-b0cb-acdafbe34d4b.vsidx
+/.vs/BestStories/FileContentIndex/read.lock
+/.vs/slnx.sqlite
+/BestStories.Api/bin
+/BestStories.Api/obj
+/BestStories.Core/bin
+/BestStories.Core/obj
+/obj
+/bin/Release
