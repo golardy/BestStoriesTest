@@ -90,4 +90,4 @@ It is also should be taken into consideration that first API calls can be longer
 ]`
 5. Request structure `http://{url}/beststories/{count}`:
 `{url} - addres locally deployed container with application`
-`{count} - amount of first best stories that will be taken and then sorted` 
+`{count} - amount of first best stories that will be taken and then sorted`
