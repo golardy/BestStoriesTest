@@ -34,7 +34,7 @@ descendants | In the case of stories or polls, the total comment count.
 
 As result the solutions retruned HackerAPI as it is and it will look:
 
-`[
+```[
     {
     "title": "A uBlock Origin update was rejected from the Chrome Web Store",
     "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
@@ -47,7 +47,7 @@ As result the solutions retruned HackerAPI as it is and it will look:
     { ... },
     { ... },
     ...
-]`
+]```
 
 The next assumption was made that data on Hacker API is not to often changed and it allows to use caching mechanism to exclude Hacker API overlaping.
 Current approach allow handle a large amount of request witout huge amount request to Hacker API
@@ -70,7 +70,8 @@ It is also should be taken into consideration that first API calls can be longer
 3. Lets run container and execute the next command:
 `docker run -d -p 8080:80 --name beststoryapicontainer beststoryapi-image`
 4. Currently our application is available by address - http://localhost:8080/ and using Postman/Fillder the api can be send to address http://localhost:8080/beststories/2 and API return result:
-`[
+
+```[
     {
         "title": "Downfall Attacks",
         "url": "https://downfall.page/",
@@ -87,7 +88,8 @@ It is also should be taken into consideration that first API calls can be longer
         "score": 1298,
         "descendants": 300
     }
-]`
+]```
+
 5. Request structure `http://{url}/beststories/{count}`:
-`{url} - addres locally deployed container with application`
-`{count} - amount of first best stories that will be taken and then sorted`
+-`{url} - addres locally deployed container with application`
+-`{count} - amount of first best stories that will be taken and then sorted`
