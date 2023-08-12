@@ -177,6 +177,4 @@ For our example if we request 3 items will be:
 Swagger API documentation will be available http://localhost:8080/swagger/index.html. It can be used for testing API
 
 ### Request structure 
-API include the only one API endpoint `http://localhost:8080/beststories/{count}`.
--`{url} - addres locally deployed container with application`
--`{count} - amount of first best stories that will be taken and then sorted`
+API include the only one API endpoint `http://localhost:8080/beststories/{count}` where count requested stories
