@@ -4,9 +4,9 @@ Dockerized aspnet core web api project that works with Hacker API
 ## Links
 * [Hacker API](https://github.com/HackerNews/API)
 
-## Asummptions/Notes
+## Notes
 According to requiremnts the API should return data as it is in Hacker API and it should be:
-`[
+``[
     {
     "title": "A uBlock Origin update was rejected from the Chrome Web Store",
     "uri": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
@@ -19,7 +19,7 @@ According to requiremnts the API should return data as it is in Hacker API and i
     { ... },
     { ... },
     ...
-]`
+]``
 
 According to HackerAPI documentations we have (looks like the API documentation was updated):
 
@@ -90,6 +90,6 @@ It is also should be taken into consideration that first API calls can be longer
     }
 ]```
 
-5. Request structure `http://{url}/beststories/{count}`:
+### Request structure `http://{url}/beststories/{count}`:
 -`{url} - addres locally deployed container with application`
 -`{count} - amount of first best stories that will be taken and then sorted`
