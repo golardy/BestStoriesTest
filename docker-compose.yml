@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  beststories.api:
+    image: ${DOCKER_REGISTRY-}beststoriesapi
+    build:
+      context: .
+      dockerfile: BestStories.Api/Dockerfile
+    ports:
+      - "8080"
