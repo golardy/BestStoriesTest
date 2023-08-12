@@ -39,16 +39,17 @@ namespace BestStories.Core.Implementations
                 result.Add(storiesData[storyId]);
             }
 
-            return result;
+            return result.OrderByDescending(x =>x.Score);
         }
 
-        private async Task<int[]> GetBestStoriesIds()
+        private async Task<int[]?> GetBestStoriesIds()
         {
             var bestStoriesCacheKey = "bestStoriesList";
 
-            if (_memoryCache.TryGetValue(bestStoriesCacheKey, out int[] bestStoriesIds))
+            if (_memoryCache.TryGetValue(bestStoriesCacheKey, out int[]? bestStoriesIds))
             {
                 _logger.LogDebug($"Cache HIT: Found {bestStoriesCacheKey}");
+
                 return bestStoriesIds;
             }
 
@@ -72,9 +73,9 @@ namespace BestStories.Core.Implementations
             }
         }
 
-        private async Task<Dictionary<int, StoryItemResponse>> GetStoriesData(int[] bestStoriesIds)
+        private async Task<Dictionary<int, StoryItemResponse?>> GetStoriesData(int[] bestStoriesIds)
         {
-            var bestStoriesItems = new Dictionary<int, StoryItemResponse>();
+            var bestStoriesItems = new Dictionary<int, StoryItemResponse?>();
 
             await semaphoreSlim.WaitAsync();
             try
@@ -82,7 +83,7 @@ namespace BestStories.Core.Implementations
                 foreach (var id in bestStoriesIds)
                 {
                     var bestStoryCacheKey = $"bestStory:{id}";
-                    if (!_memoryCache.TryGetValue(bestStoryCacheKey, out StoryItemResponse storyItemResponse))
+                    if (!_memoryCache.TryGetValue(bestStoryCacheKey, out StoryItemResponse? storyItemResponse))
                     {
                         _logger.LogDebug($"Cache HIT: Not found {bestStoryCacheKey}");
                         storyItemResponse = await _dataSource.Get<StoryItemResponse>($"item/{id}.json");

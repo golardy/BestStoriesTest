@@ -9,7 +9,7 @@
         /// <summary>
         /// Url value
         /// </summary>
-        public required string Url { get; set; }
+        public string Url { get; set; }
         /// <summary>
         /// Posted by value
         /// </summary>
