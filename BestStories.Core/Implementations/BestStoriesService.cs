@@ -33,13 +33,12 @@ namespace BestStories.Core.Implementations
             var bestStoriesIds = await GetBestStoriesIds();
             var storiesData = await GetStoriesData(bestStoriesIds);
 
-            var takenStoriesIds = bestStoriesIds.Take(count);
-            foreach (var storyId in takenStoriesIds)
+            foreach (var storyId in bestStoriesIds)
             {
                 result.Add(storiesData[storyId]);
             }
 
-            return result.OrderByDescending(x =>x.Score);
+            return result.OrderByDescending(x =>x.Score).Take(count);
         }
 
         private async Task<int[]?> GetBestStoriesIds()

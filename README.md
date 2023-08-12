@@ -55,7 +55,85 @@ As result the solutions retruned HackerAPI as it is and it will look:
 
 The next assumption was made that data on Hacker API is not to often changed and it allows to use caching mechanism to exclude Hacker API overlaping.
 Current approach allow handle a large amount of request witout huge amount request to Hacker API
-It is also should be taken into consideration that first API calls can be longer than the next one because of cache is filled with data
+It is also should be taken into consideration that first API calls can be longer than the next one because of cache is filled with data.
+
+Logic for retriving data is to receive all data from Hacker API and then manipulate with this data. For example - the list of best stories contains 
+5 elements:
+```
+[
+    {
+    "title": "A uBlock Origin update was rejected from the Chrome Web Store",
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
+    "by": "ismaildonmez",
+    "time": 123456789,
+    "score": 30,
+    "descendants": 1
+    },
+    {
+    "title": "A uBlock Origin update was rejected from the Chrome Web Store",
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
+    "by": "ismaildonmez",
+    "time": 123456789,
+    "score": 10,
+    "descendants": 3
+    },
+    {
+    "title": "A uBlock Origin update was rejected from the Chrome Web Store",
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
+    "by": "ismaildonmez",
+    "time": 123456789,
+    "score": 40,
+    "descendants": 572
+    },
+    {
+    "title": "A uBlock Origin update was rejected from the Chrome Web Store",
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
+    "by": "ismaildonmez",
+    "time": 123456789,
+    "score": 11,
+    "descendants": 10
+    },
+    {
+    "title": "A uBlock Origin update was rejected from the Chrome Web Store",
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
+    "by": "ismaildonmez",
+    "time": 123456789,
+    "score": 60,
+    "descendants": 30
+    },
+]
+```
+
+According to requirements the API should return an array of the first n "best stories" as returned by the Hacker News API, sorted by their score in a descending order. 
+For our example if we request 3 items will be:
+```
+[
+{
+    "title": "A uBlock Origin update was rejected from the Chrome Web Store",
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
+    "by": "ismaildonmez",
+    "time": 123456789,
+    "score": 60,
+    "descendants": 30
+    },
+    {
+    "title": "A uBlock Origin update was rejected from the Chrome Web Store",
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
+    "by": "ismaildonmez",
+    "time": 123456789,
+    "score": 40,
+    "descendants": 572
+    },
+    {
+    "title": "A uBlock Origin update was rejected from the Chrome Web Store",
+    "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
+    "by": "ismaildonmez",
+    "time": 123456789,
+    "score": 30,
+    "descendants": 1
+    }
+]
+```
 
 ## Technologies
 1. .Net 7.0
@@ -96,6 +174,9 @@ It is also should be taken into consideration that first API calls can be longer
 ]
 ```
 
-### Request structure `http://{url}/beststories/{count}`:
+Swagger API documentation will be available http://localhost:8080/swagger/index.html. It can be used for testing API
+
+### Request structure 
+API include the only one API endpoint `http://localhost:8080/beststories/{count}`.
 -`{url} - addres locally deployed container with application`
 -`{count} - amount of first best stories that will be taken and then sorted`
