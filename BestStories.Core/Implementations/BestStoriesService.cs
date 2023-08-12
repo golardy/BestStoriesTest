@@ -13,7 +13,7 @@ namespace BestStories.Core.Implementations
         private static readonly SemaphoreSlim semaphoreSlim = new(1);
         private static readonly MemoryCacheEntryOptions cacheExpirationOptions = new()
         {
-            AbsoluteExpiration = DateTime.Now.AddMinutes(5)
+            AbsoluteExpiration = DateTime.Now.AddMinutes(60)
         };
 
         private readonly IHttpClient _dataSource;

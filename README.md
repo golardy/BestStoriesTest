@@ -6,7 +6,8 @@ Dockerized aspnet core web api project that works with Hacker API
 
 ## Notes
 According to requiremnts the API should return data as it is in Hacker API and it should be:
-``[
+```
+[
     {
     "title": "A uBlock Origin update was rejected from the Chrome Web Store",
     "uri": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
@@ -19,7 +20,8 @@ According to requiremnts the API should return data as it is in Hacker API and i
     { ... },
     { ... },
     ...
-]``
+]
+```
 
 According to HackerAPI documentations we have (looks like the API documentation was updated):
 
@@ -34,7 +36,8 @@ descendants | In the case of stories or polls, the total comment count.
 
 As result the solutions retruned HackerAPI as it is and it will look:
 
-```[
+```
+[
     {
     "title": "A uBlock Origin update was rejected from the Chrome Web Store",
     "url": "https://github.com/uBlockOrigin/uBlock-issues/issues/745",
@@ -47,7 +50,8 @@ As result the solutions retruned HackerAPI as it is and it will look:
     { ... },
     { ... },
     ...
-]```
+]
+```
 
 The next assumption was made that data on Hacker API is not to often changed and it allows to use caching mechanism to exclude Hacker API overlaping.
 Current approach allow handle a large amount of request witout huge amount request to Hacker API
@@ -71,7 +75,8 @@ It is also should be taken into consideration that first API calls can be longer
 `docker run -d -p 8080:80 --name beststoryapicontainer beststoryapi-image`
 4. Currently our application is available by address - http://localhost:8080/ and using Postman/Fillder the api can be send to address http://localhost:8080/beststories/2 and API return result:
 
-```[
+```
+[
     {
         "title": "Downfall Attacks",
         "url": "https://downfall.page/",
@@ -88,7 +93,8 @@ It is also should be taken into consideration that first API calls can be longer
         "score": 1298,
         "descendants": 300
     }
-]```
+]
+```
 
 ### Request structure `http://{url}/beststories/{count}`:
 -`{url} - addres locally deployed container with application`
